@@ -1,610 +1,841 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Little Something ❤️</title>
+  <title>For MINE 💗</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    background:#080308;
-    color:#fff;
-    font-family:Arial,sans-serif;
-    overflow-x:hidden;
-}
-
-/* BACKGROUND */
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:
-        radial-gradient(circle at 20% 20%,#4b092d55,transparent 30%),
-        radial-gradient(circle at 80% 70%,#71104444,transparent 30%);
-    pointer-events:none;
-    z-index:-2;
-}
-
-.stars{
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    overflow:hidden;
-}
-
-.star{
-    position:absolute;
-    width:3px;
-    height:3px;
-    background:white;
-    border-radius:50%;
-    animation:twinkle 2s infinite alternate;
-}
-
-@keyframes twinkle{
-    from{opacity:.15}
-    to{opacity:1}
-}
-
-/* COMMON */
-section{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:70px 22px;
-}
-
-h1,h2{
-    font-family:Georgia,serif;
-}
-
-button{
-    margin-top:35px;
-    padding:15px 30px;
-    border-radius:50px;
-    border:1px solid #ffffff33;
-    background:#ffffff12;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-    backdrop-filter:blur(10px);
-    transition:.3s;
-}
-
-button:hover{
-    transform:scale(1.06);
-    background:#ffffff22;
-}
-
-/* OPENING */
-.hero{
-    animation:appear 1.5s ease;
-}
-
-.mini{
-    letter-spacing:5px;
-    font-size:13px;
-    opacity:.6;
-    margin-bottom:25px;
-}
-
-.hero h1{
-    font-size:clamp(55px,14vw,100px);
-    margin-bottom:20px;
-}
-
-.hero p{
-    max-width:500px;
-    line-height:1.8;
-    opacity:.75;
-    font-size:17px;
-}
-
-@keyframes appear{
-    from{
-        opacity:0;
-        transform:translateY(25px);
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    to{
-        opacity:1;
-        transform:translateY(0);
+
+    html {
+      scroll-behavior: smooth;
     }
-}
 
-/* MESSAGE */
-.hidden{
-    display:none;
-}
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top, #35152d 0%, #160b19 45%, #08050a 100%);
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-.message{
-    animation:appear 1.3s ease;
-}
+    /* Floating stars */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
 
-.heart{
-    font-size:55px;
-    animation:heartbeat 1.3s infinite;
-    margin-bottom:25px;
-}
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: twinkle 3s infinite ease-in-out;
+    }
 
-@keyframes heartbeat{
-    50%{transform:scale(1.15)}
-}
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.2;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
 
-.message h2{
-    font-size:45px;
-    margin-bottom:30px;
-}
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
 
-.letter{
-    max-width:680px;
-    line-height:2;
-    font-size:18px;
-    opacity:.85;
-}
+    section {
+      min-height: 100vh;
+      padding: 80px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-.highlight{
-    margin-top:35px;
-    padding:25px;
-    max-width:600px;
-    border:1px solid #ffffff18;
-    border-radius:25px;
-    background:#ffffff09;
-    backdrop-filter:blur(12px);
-    line-height:1.8;
-}
+    .content {
+      width: 100%;
+      max-width: 850px;
+      margin: auto;
+    }
 
-/* MEMORIES */
-.memories{
-    min-height:auto;
-    padding-top:100px;
-    padding-bottom:100px;
-}
+    /* Opening */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+    }
 
-.memories h2{
-    font-size:45px;
-    margin-bottom:15px;
-}
+    .hero-box {
+      animation: fadeUp 1.8s ease;
+    }
 
-.memories .intro{
-    opacity:.65;
-    margin-bottom:40px;
-}
+    .small-text {
+      font-size: 15px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
 
-.gallery{
-    width:100%;
-    max-width:900px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:18px;
-}
+    h1 {
+      font-size: clamp(48px, 13vw, 95px);
+      font-weight: normal;
+      margin-bottom: 20px;
+      text-shadow: 0 0 30px rgba(255, 120, 180, 0.3);
+    }
 
-.photo{
-    min-height:280px;
-    border-radius:22px;
-    overflow:hidden;
-    background:#ffffff0d;
-    border:1px solid #ffffff15;
-    transition:.4s;
-}
+    .hero p {
+      font-size: 19px;
+      line-height: 1.8;
+      color: #e8dce4;
+      max-width: 650px;
+      margin: auto;
+    }
 
-.photo:hover{
-    transform:translateY(-7px) scale(1.02);
-}
+    button {
+      margin-top: 35px;
+      padding: 14px 30px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.08);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      backdrop-filter: blur(8px);
+    }
 
-.photo img{
-    width:100%;
-    height:100%;
-    min-height:280px;
-    object-fit:cover;
-    display:block;
-}
+    button:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.15);
+      box-shadow: 0 10px 30px rgba(255, 100, 170, 0.15);
+    }
 
-.video-box{
-    width:100%;
-    max-width:650px;
-    margin-top:30px;
-    border-radius:25px;
-    overflow:hidden;
-    border:1px solid #ffffff18;
-    background:#ffffff09;
-}
+    /* Headings */
+    h2 {
+      font-size: clamp(34px, 8vw, 55px);
+      font-weight: normal;
+      margin-bottom: 35px;
+    }
 
-.video-box video{
-    width:100%;
-    display:block;
-}
+    .subtitle {
+      color: #d6c7d0;
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 35px;
+    }
 
-/* REASONS */
-.reasons{
-    min-height:auto;
-}
+    /* Message */
+    .letter {
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 25px;
+      padding: 35px 28px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+    }
 
-.reasons h2{
-    font-size:42px;
-    margin-bottom:35px;
-}
+    .letter p {
+      font-size: 18px;
+      line-height: 2;
+      color: #f1e7ed;
+      margin-bottom: 20px;
+    }
 
-.reason{
-    width:100%;
-    max-width:600px;
-    padding:22px;
-    margin:8px;
-    border-radius:20px;
-    background:#ffffff08;
-    border:1px solid #ffffff12;
-    transition:.3s;
-}
+    .highlight {
+      font-size: 23px !important;
+      color: #fff !important;
+    }
 
-.reason:hover{
-    transform:translateX(6px);
-}
+    /* Shayari */
+    .shayari {
+      margin-top: 25px;
+      padding: 35px 25px;
+      border-radius: 25px;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.07),
+        rgba(255,255,255,0.025)
+      );
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
 
-/* BIRTHDAY */
-.birthday{
-    background:
-        radial-gradient(circle at center,#4d0b2c66,transparent 55%);
-}
+    .shayari p {
+      font-size: 19px;
+      line-height: 2.15;
+      color: #f4e9ef;
+    }
 
-.birthday h2{
-    font-size:clamp(45px,10vw,75px);
-    margin-bottom:25px;
-}
+    .shayari .special {
+      font-size: 21px;
+      margin: 18px 0;
+    }
 
-.birthday-text{
-    max-width:650px;
-    font-family:Georgia,serif;
-    font-size:21px;
-    line-height:2;
-}
+    /* Memories */
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 35px;
+    }
 
-/* FINAL */
-.final{
-    min-height:100vh;
-    background:#050105;
-}
+    .memory {
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+    }
 
-.final h2{
-    font-size:45px;
-    margin-bottom:30px;
-}
+    .memory img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: 0.5s;
+    }
 
-.final-text{
-    max-width:650px;
-    font-family:Georgia,serif;
-    font-size:22px;
-    line-height:2;
-}
+    .memory:hover img {
+      transform: scale(1.05);
+    }
 
-.signature{
-    margin-top:35px;
-    opacity:.6;
-    font-style:italic;
-}
+    .memory-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 35px 15px 15px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.85));
+      font-size: 14px;
+      text-align: left;
+    }
 
-/* MUSIC BUTTON */
-.music{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    margin:0;
-    padding:0;
-    z-index:20;
-}
-</style>
+    /* Video */
+    .video-box {
+      margin-top: 35px;
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    video {
+      width: 100%;
+      display: block;
+      max-height: 600px;
+      object-fit: contain;
+      background: #050308;
+    }
+
+    /* Reasons */
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 35px;
+    }
+
+    .reason {
+      padding: 25px 15px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 17px;
+      line-height: 1.6;
+      transition: 0.3s;
+    }
+
+    .reason:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* Birthday */
+    .birthday-box {
+      padding: 45px 25px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top, rgba(255,130,190,0.13), transparent 55%),
+        rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .birthday-box p {
+      font-size: 19px;
+      line-height: 2;
+      color: #f0e5eb;
+      margin-bottom: 20px;
+    }
+
+    .birthday-title {
+      font-size: clamp(42px, 10vw, 70px);
+      margin-bottom: 30px;
+    }
+
+    /* Final */
+    .final {
+      min-height: 100vh;
+    }
+
+    .final-box {
+      animation: fadeUp 2s ease;
+    }
+
+    .final-box .one-last {
+      font-size: 15px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 25px;
+    }
+
+    .final-box h2 {
+      margin-bottom: 30px;
+    }
+
+    .final-message {
+      font-size: 21px;
+      line-height: 2;
+      color: #f2e7ed;
+    }
+
+    .signature {
+      margin-top: 45px;
+      font-size: 18px;
+      color: #d9c6d1;
+    }
+
+    /* Music */
+    .music-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      width: 52px;
+      height: 52px;
+      padding: 0;
+      margin: 0;
+      border-radius: 50%;
+      font-size: 20px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hidden-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 1s ease;
+    }
+
+    .hidden-section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+
+      section {
+        padding: 70px 16px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .letter {
+        padding: 28px 20px;
+      }
+
+      .letter p {
+        font-size: 17px;
+      }
+
+      .shayari {
+        padding: 28px 18px;
+      }
+
+      .shayari p {
+        font-size: 17px;
+        line-height: 2;
+      }
+
+      .shayari .special {
+        font-size: 19px;
+      }
+
+      .memory-grid,
+      .reasons {
+        grid-template-columns: 1fr;
+      }
+
+      .birthday-box {
+        padding: 35px 20px;
+      }
+
+      .birthday-box p {
+        font-size: 17px;
+      }
+
+      .final-message {
+        font-size: 18px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- STARS -->
-<div class="stars">
-    <span class="star" style="top:12%;left:10%"></span>
-    <span class="star" style="top:25%;left:80%"></span>
-    <span class="star" style="top:45%;left:30%"></span>
-    <span class="star" style="top:65%;left:90%"></span>
-    <span class="star" style="top:80%;left:15%"></span>
-    <span class="star" style="top:90%;left:60%"></span>
-    <span class="star" style="top:35%;left:65%"></span>
-</div>
+  <!-- Stars -->
+  <div class="stars" id="stars"></div>
+
+  <div class="container">
+
+    <!-- OPENING -->
+    <section class="hero">
+      <div class="hero-box">
+
+        <div class="small-text">A little something for you</div>
+
+        <h1>Hey, MINE 💗</h1>
+
+        <p>
+          Aaj kuch special hai…<br>
+          Aur nahi, is baar koi normal birthday wish nahi hai. 😂<br>
+          Bas ek chhoti si cheez hai… <b>tere liye.</b>
+        </p>
+
+        <button onclick="scrollToSection('message')">
+          Open kar na 👀💗
+        </button>
+
+      </div>
+    </section>
 
 
-<!-- OPENING -->
-<section class="hero">
+    <!-- MAIN MESSAGE -->
+    <section id="message" class="hidden-section">
+      <div class="content">
 
-    <div class="mini">A LITTLE SOMETHING</div>
+        <h2>Happy Birthday, MINE. 💗</h2>
 
-    <h1>Hey, MINE ❤️</h1>
+        <div class="letter">
 
-    <p>
-        You probably weren't expecting this...
-        but I made something for you.
-    </p>
+          <p>
+            Jab se apni dosti hui hai, pata hi nahi chala kab tu meri
+            life ka itna important part ban gayi. 💗
+          </p>
 
-    <button onclick="openMessage()">
-        Open it 👀
-    </button>
+          <p>
+            Itni saari memories, random bakchodi, fights, hasi-mazaak…
+            sab kuch somehow special hai.
+          </p>
 
-</section>
+          <p>
+            Sach kahu toh, I’m genuinely glad ki tu meri life mein hai.
+          </p>
 
+          <p class="highlight">
+            Tu annoying toh bohot hai 😂 but still,
+            <b>you're my favourite person to annoy.</b> 😌💗
+          </p>
 
-<!-- LETTER -->
-<section id="message" class="message hidden">
+          <p>
+            I don't know exactly kab hua, but somewhere along the way,
+            tu mere liye <b>thodi si zyada special ho gayi.</b> 👀💗
+          </p>
 
-    <div class="heart">❤️</div>
+        </div>
 
-    <h2>For My MINE</h2>
-
-    <p class="letter">
-
-        Happy Birthday, MINE. 🫶🏻
-
-        <br><br>
-
-        Honestly, when our friendship started around
-        November–December, I had absolutely no idea
-        that in such a short time you would become
-        such an important part of my life.
-
-        <br><br>
-
-        Somewhere between our random conversations,
-        stupid jokes, annoying each other and all those
-        little moments, you became someone really
-        special to me.
-
-        <br><br>
-
-        You're the kind of person who can make an
-        ordinary day feel a little better just by being there.
-
-    </p>
-
-    <div class="highlight">
-
-        And yes... before you get too proud,
-
-        <br>
-
-        you're still annoying as hell. 😂❤️
-
-        <br><br>
-
-        But you're <b>my</b> annoying person.
-
-        <br>
-
-        <b>My MINE. 😌</b>
-
-    </div>
-
-    <button onclick="showMemories()">
-        Some memories → 📸
-    </button>
-
-</section>
+      </div>
+    </section>
 
 
-<!-- MEMORIES -->
-<section id="memories" class="memories hidden">
+    <!-- SHAYARI -->
+    <section class="hidden-section">
+      <div class="content">
 
-    <h2>Our Little Moments 📸</h2>
+        <h2>For You… 💗</h2>
 
-    <p class="intro">
-        Some things are better remembered than explained.
-    </p>
+        <div class="shayari">
 
-    <div class="gallery">
+          <p>
+            <b>Teri dosti bhi badi kamaal hai,</b><br>
+            Kabhi sukoon, kabhi bawaal hai. 😂
+          </p>
 
-        <!-- Replace these with your photos -->
-        <div class="photo">
+          <p class="special">
+            Tu bestfriend hai meri, ye baat alag hai,<br>
+            Par sach kahu toh… <b>tu thodi zyada hi kamaal hai. 💗</b>
+          </p>
+
+          <p>
+            Teri bakbak sunna bhi achha lagta hai,<br>
+            Aur tera gussa dekhna toh aur bhi pyaara lagta hai… 😚
+          </p>
+
+          <p class="special">
+            <b>Bas ek dikkat hai madam,</b><br>
+            Tu bestfriend hai… ye dil ko samjhaun,<br>
+            ya teri in adaon pe thoda aur fida ho jaun? 👀😚😜
+          </p>
+
+          <p>
+            Teri ye smile bhi na, bada zulm karti hai,<br>
+            aur teri aankhon ki baat toh alag hi chalti hai… 👀
+          </p>
+
+          <p class="special">
+            Ab tu khud hi itni pyaari lagegi,<br>
+            toh mera dil thoda naughty ho jaaye,<br>
+            <b>isme meri kya galti hai? 🤷🏻💗</b>
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- MEMORIES -->
+    <section class="hidden-section">
+      <div class="content">
+
+        <h2>Kuch Yaadein… 📸💗</h2>
+
+        <p class="subtitle">
+          Kuch moments jo simple the…<br>
+          but somehow mere liye special ban gaye.
+        </p>
+
+        <div class="memory-grid">
+
+          <div class="memory">
             <img src="images/photo1.jpg" alt="Memory 1">
-        </div>
+            <div class="memory-caption">
+              Ye wala moment 😂💗
+            </div>
+          </div>
 
-        <div class="photo">
+          <div class="memory">
             <img src="images/photo2.jpg" alt="Memory 2">
-        </div>
+            <div class="memory-caption">
+              Is din ki bakchodi abhi tak yaad hai. 😭😂
+            </div>
+          </div>
 
-        <div class="photo">
+          <div class="memory">
             <img src="images/photo3.jpg" alt="Memory 3">
-        </div>
+            <div class="memory-caption">
+              One of my favourite memories. 💗
+            </div>
+          </div>
 
-        <div class="photo">
+          <div class="memory">
             <img src="images/photo4.jpg" alt="Memory 4">
+            <div class="memory-caption">
+              Bas tu aur teri bakchodi. 😂
+            </div>
+          </div>
+
         </div>
 
-    </div>
+        <!-- VIDEO -->
+        <div class="video-box">
 
-    <!-- Replace video1.mp4 with your video -->
-    <div class="video-box">
-        <video controls playsinline>
+          <video controls playsinline>
             <source src="videos/video1.mp4" type="video/mp4">
-        </video>
-    </div>
+            Your browser does not support this video.
+          </video>
 
-    <button onclick="showReasons()">
-        One more thing ❤️
-    </button>
+        </div>
 
-</section>
-
-
-<!-- THINGS I LIKE -->
-<section id="reasons" class="reasons hidden">
-
-    <h2>Things I Love About You ❤️</h2>
-
-    <div class="reason">
-        Your smile — even when you don't realise how cute it is.
-    </div>
-
-    <div class="reason">
-        The way you understand things without me having to explain everything.
-    </div>
-
-    <div class="reason">
-        Your stupid little habits. 😂
-    </div>
-
-    <div class="reason">
-        The way you somehow make boring conversations interesting.
-    </div>
-
-    <div class="reason">
-        And honestly... just having you around.
-    </div>
-
-    <button onclick="showBirthday()">
-        Okay... last part 🎂
-    </button>
-
-</section>
+      </div>
+    </section>
 
 
-<!-- BIRTHDAY -->
-<section id="birthday" class="birthday hidden">
+    <!-- THINGS I LOVE -->
+    <section class="hidden-section">
+      <div class="content">
 
-    <div class="heart">🎂❤️</div>
+        <h2>Things I Love About You 🫶🏻</h2>
 
-    <h2>Happy Birthday, MINE</h2>
+        <div class="reasons">
 
-    <p class="birthday-text">
+          <div class="reason">
+            Teri smile. 💗
+          </div>
 
-        I don't know what the future looks like,
-        and I don't want to make some huge dramatic promise.
+          <div class="reason">
+            Teri stupid si baatein. 😂
+          </div>
 
-        <br><br>
+          <div class="reason">
+            Teri bakbak.
+          </div>
 
-        I just hope I get to be there for a lot more
-        birthdays, more memories, more laughs,
-        more fights and more stupid conversations.
+          <div class="reason">
+            Tera mujhe irritate karna. 😂
+          </div>
 
-        <br><br>
+          <div class="reason">
+            Tera gussa.
+          </div>
 
-        You deserve a year full of happiness,
-        peace, success and all the little things
-        that make you smile.
+          <div class="reason">
+            The way you understand me.
+          </div>
 
-    </p>
+          <div class="reason">
+            Tera random pagalpan. 😭
+          </div>
 
-    <button onclick="showFinal()">
-        One last thing... 👀
-    </button>
+          <div class="reason">
+            Aur sabse zyada… <b>bas tera hona. 💗</b>
+          </div>
 
-</section>
+        </div>
 
-
-<!-- FINAL -->
-<section id="final" class="final hidden">
-
-    <div class="heart">❤️</div>
-
-    <h2>Just Remember This</h2>
-
-    <p class="final-text">
-
-        You're genuinely special to me.
-
-        <br><br>
-
-        And I'm really, really glad
-        that life decided to put you in mine.
-
-        <br><br>
-
-        Stay happy.
-        Stay crazy.
-        Stay exactly the way you are.
-
-        <br><br>
-
-        And never forget...
-
-        <br><br>
-
-        <b>
-        Someone out here is very,
-        very lucky to have you. ❤️
-        </b>
-
-    </p>
-
-    <div class="signature">
-        — Your favourite idiot ❤️
-    </div>
-
-</section>
+      </div>
+    </section>
 
 
-<!-- MUSIC -->
-<button class="music" onclick="toggleMusic()">🎵</button>
+    <!-- BIRTHDAY -->
+    <section class="hidden-section">
+      <div class="content">
 
-<audio id="music" loop>
+        <div class="birthday-box">
+
+          <div class="birthday-title">
+            🎂
+          </div>
+
+          <h2>Okay MINE, ab serious ho ja. 😂</h2>
+
+          <p>
+            I hope this birthday brings you everything you deserve —
+            happiness, success, peace and lots of reasons to smile.
+          </p>
+
+          <p>
+            Tu hamesha khush rahe, apne dreams achieve kare,
+            aur life mein jo bhi chahe woh mile. 💗
+          </p>
+
+          <p>
+            Bas aise hi rehna… thodi pagal, thodi annoying,
+            but always <b>you.</b> 😌💗
+          </p>
+
+          <p>
+            Aur haan… mujhe aise hi tolerate karti rehna. 😂
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- FINAL -->
+    <section class="final hidden-section">
+
+      <div class="content final-box">
+
+        <div class="one-last">
+          One last thing…
+        </div>
+
+        <h2>💗</h2>
+
+        <div class="final-message">
+
+          Tu mere liye jitna sochti hai,
+          usse <b>thodi zyada special hai. 💗</b>
+
+          <br><br>
+
+          I’m genuinely lucky to have you in my life.
+
+          <br><br>
+
+          I don't know future mein kya hoga,
+          but I really hope ki aisi hi aur memories banate rahein…
+          aur tere birthdays mein mujhe tujhe annoy karne ka
+          chance milta rahe. 😂💗
+
+          <br><br>
+
+          <b>Happy Birthday, MINE. 💗</b>
+
+          <br><br>
+
+          Stay happy.<br>
+          Stay crazy.<br>
+          Stay exactly the way you are.
+
+          <br><br>
+
+          <b>
+            Aur haan… meri MINE hi rehna. 👀😚💗
+          </b>
+
+        </div>
+
+        <div class="signature">
+          — Tera favourite idiot 💗
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <!-- MUSIC BUTTON -->
+  <button class="music-btn" onclick="toggleMusic()" id="musicButton">
+    🎵
+  </button>
+
+  <audio id="bgMusic" loop>
     <source src="music/song.mp3" type="audio/mpeg">
-</audio>
+  </audio>
 
 
-<script>
+  <script>
 
-function scrollToSection(id){
+    /* Stars */
+    const starsContainer = document.getElementById("stars");
 
-    document.getElementById(id).classList.remove("hidden");
+    for (let i = 0; i < 120; i++) {
 
-    setTimeout(() => {
-        document.getElementById(id).scrollIntoView({
-            behavior:"smooth"
-        });
-    },100);
-}
+      const star = document.createElement("div");
 
-function openMessage(){
-    scrollToSection("message");
-}
+      star.classList.add("star");
 
-function showMemories(){
-    scrollToSection("memories");
-}
+      star.style.left = Math.random() * 100 + "%";
+      star.style.top = Math.random() * 100 + "%";
 
-function showReasons(){
-    scrollToSection("reasons");
-}
+      star.style.animationDelay =
+        Math.random() * 3 + "s";
 
-function showBirthday(){
-    scrollToSection("birthday");
-}
+      star.style.transform =
+        "scale(" + (Math.random() * 1.5 + 0.5) + ")";
 
-function showFinal(){
-    scrollToSection("final");
-}
-
-function toggleMusic(){
-
-    const music = document.getElementById("music");
-
-    if(music.paused){
-        music.play();
-    }else{
-        music.pause();
+      starsContainer.appendChild(star);
     }
 
-}
 
-</script>
+    /* Scroll */
+    function scrollToSection(id) {
+
+      const section = document.getElementById(id);
+
+      section.scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* Reveal sections */
+    const sections =
+      document.querySelectorAll(".hidden-section");
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("show");
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.15
+        }
+      );
+
+
+    sections.forEach((section) => {
+
+      observer.observe(section);
+
+    });
+
+
+    /* Music */
+    const music =
+      document.getElementById("bgMusic");
+
+    const musicButton =
+      document.getElementById("musicButton");
+
+    let playing = false;
+
+
+    function toggleMusic() {
+
+      if (!playing) {
+
+        music.play();
+
+        musicButton.innerHTML = "🔊";
+
+        playing = true;
+
+      } else {
+
+        music.pause();
+
+        musicButton.innerHTML = "🎵";
+
+        playing = false;
+
+      }
+
+    }
+
+  </script>
 
 </body>
 </html>
