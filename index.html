@@ -21,11 +21,12 @@
       font-family: Georgia, "Times New Roman", serif;
       background:
         radial-gradient(circle at top, #35152d 0%, #160b19 45%, #08050a 100%);
-      color: #fff;
+      color: white;
       overflow-x: hidden;
     }
 
-    /* Floating stars */
+    /* ---------- STARS ---------- */
+
     .stars {
       position: fixed;
       inset: 0;
@@ -40,28 +41,30 @@
       height: 2px;
       background: white;
       border-radius: 50%;
-      opacity: 0.7;
+      opacity: 0.6;
       animation: twinkle 3s infinite ease-in-out;
     }
 
     @keyframes twinkle {
       0%, 100% {
-        opacity: 0.2;
+        opacity: 0.15;
       }
+
       50% {
         opacity: 1;
       }
     }
 
+    /* ---------- GENERAL ---------- */
+
     .container {
       position: relative;
       z-index: 1;
-      width: 100%;
     }
 
     section {
       min-height: 100vh;
-      padding: 80px 20px;
+      padding: 70px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -74,27 +77,6 @@
       margin: auto;
     }
 
-    /* Opening */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 25px;
-    }
-
-    .hero-box {
-      animation: fadeUp 1.8s ease;
-    }
-
-    .small-text {
-      font-size: 15px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      opacity: 0.7;
-      margin-bottom: 20px;
-    }
-
     h1 {
       font-size: clamp(48px, 13vw, 95px);
       font-weight: normal;
@@ -102,48 +84,57 @@
       text-shadow: 0 0 30px rgba(255, 120, 180, 0.3);
     }
 
-    .hero p {
-      font-size: 19px;
-      line-height: 1.8;
-      color: #e8dce4;
-      max-width: 650px;
-      margin: auto;
-    }
-
-    button {
-      margin-top: 35px;
-      padding: 14px 30px;
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 30px;
-      background: rgba(255,255,255,0.08);
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-      backdrop-filter: blur(8px);
-    }
-
-    button:hover {
-      transform: translateY(-3px);
-      background: rgba(255,255,255,0.15);
-      box-shadow: 0 10px 30px rgba(255, 100, 170, 0.15);
-    }
-
-    /* Headings */
     h2 {
       font-size: clamp(34px, 8vw, 55px);
       font-weight: normal;
       margin-bottom: 35px;
     }
 
-    .subtitle {
-      color: #d6c7d0;
-      font-size: 16px;
-      line-height: 1.8;
-      margin-bottom: 35px;
+    .small-text {
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      opacity: 0.65;
+      margin-bottom: 20px;
     }
 
-    /* Message */
+    /* ---------- HERO ---------- */
+
+    .hero-box {
+      animation: fadeUp 1.7s ease;
+    }
+
+    .hero p {
+      font-size: 19px;
+      line-height: 1.9;
+      color: #e8dce4;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    /* ---------- BUTTON ---------- */
+
+    .next-btn {
+      margin-top: 45px;
+      padding: 14px 32px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.07);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .next-btn:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.14);
+      box-shadow: 0 10px 30px rgba(255,100,170,0.15);
+    }
+
+    /* ---------- MESSAGE ---------- */
+
     .letter {
       background: rgba(255,255,255,0.045);
       border: 1px solid rgba(255,255,255,0.1);
@@ -160,21 +151,25 @@
       margin-bottom: 20px;
     }
 
-    .highlight {
-      font-size: 23px !important;
-      color: #fff !important;
+    .letter p:last-child {
+      margin-bottom: 0;
     }
 
-    /* Shayari */
+    .highlight {
+      font-size: 22px !important;
+    }
+
+    /* ---------- SHAYARI ---------- */
+
     .shayari {
-      margin-top: 25px;
       padding: 35px 25px;
       border-radius: 25px;
-      background: linear-gradient(
-        145deg,
-        rgba(255,255,255,0.07),
-        rgba(255,255,255,0.025)
-      );
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.07),
+          rgba(255,255,255,0.025)
+        );
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 20px 60px rgba(0,0,0,0.25);
     }
@@ -183,101 +178,61 @@
       font-size: 19px;
       line-height: 2.15;
       color: #f4e9ef;
+      margin-bottom: 22px;
+    }
+
+    .shayari p:last-child {
+      margin-bottom: 0;
     }
 
     .shayari .special {
       font-size: 21px;
-      margin: 18px 0;
     }
 
-    /* Memories */
-    .memory-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      margin-top: 35px;
+    /* ---------- VIDEOS ---------- */
+
+    .video-intro {
+      color: #d6c7d0;
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 30px;
     }
 
-    .memory {
-      aspect-ratio: 1 / 1;
-      border-radius: 20px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      position: relative;
-    }
-
-    .memory img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: 0.5s;
-    }
-
-    .memory:hover img {
-      transform: scale(1.05);
-    }
-
-    .memory-caption {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 35px 15px 15px;
-      background: linear-gradient(transparent, rgba(0,0,0,0.85));
-      font-size: 14px;
-      text-align: left;
-    }
-
-    /* Video */
     .video-box {
-      margin-top: 35px;
-      border-radius: 22px;
+      width: 100%;
+      border-radius: 24px;
       overflow: hidden;
-      background: rgba(255,255,255,0.04);
+      background: rgba(0,0,0,0.4);
       border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     }
 
     video {
       width: 100%;
       display: block;
-      max-height: 600px;
+      max-height: 650px;
       object-fit: contain;
       background: #050308;
     }
 
-    /* Reasons */
-    .reasons {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin-top: 35px;
-    }
+    /* ---------- BIRTHDAY ---------- */
 
-    .reason {
-      padding: 25px 15px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.045);
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: 17px;
-      line-height: 1.6;
-      transition: 0.3s;
-    }
-
-    .reason:hover {
-      transform: translateY(-5px);
-      background: rgba(255,255,255,0.08);
-    }
-
-    /* Birthday */
     .birthday-box {
       padding: 45px 25px;
       border-radius: 28px;
       background:
-        radial-gradient(circle at top, rgba(255,130,190,0.13), transparent 55%),
+        radial-gradient(
+          circle at top,
+          rgba(255,130,190,0.13),
+          transparent 55%
+        ),
         rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .birthday-icon {
+      font-size: 65px;
+      margin-bottom: 20px;
     }
 
     .birthday-box p {
@@ -287,34 +242,28 @@
       margin-bottom: 20px;
     }
 
-    .birthday-title {
-      font-size: clamp(42px, 10vw, 70px);
-      margin-bottom: 30px;
-    }
-
-    /* Final */
-    .final {
-      min-height: 100vh;
-    }
+    /* ---------- FINAL ---------- */
 
     .final-box {
       animation: fadeUp 2s ease;
     }
 
-    .final-box .one-last {
-      font-size: 15px;
+    .one-last {
+      font-size: 14px;
       letter-spacing: 4px;
       text-transform: uppercase;
       opacity: 0.6;
       margin-bottom: 25px;
     }
 
-    .final-box h2 {
-      margin-bottom: 30px;
+    .final-heart {
+      font-size: 55px;
+      margin-bottom: 25px;
+      animation: heartbeat 1.8s infinite;
     }
 
     .final-message {
-      font-size: 21px;
+      font-size: 20px;
       line-height: 2;
       color: #f2e7ed;
     }
@@ -325,7 +274,18 @@
       color: #d9c6d1;
     }
 
-    /* Music */
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.12);
+      }
+    }
+
+    /* ---------- MUSIC ---------- */
+
     .music-btn {
       position: fixed;
       right: 18px;
@@ -336,26 +296,19 @@
       padding: 0;
       margin: 0;
       border-radius: 50%;
-      font-size: 20px;
+      border: 1px solid rgba(255,255,255,0.25);
       background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
     }
 
-    /* Animations */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    /* ---------- SCROLL ANIMATION ---------- */
 
     .hidden-section {
       opacity: 0;
-      transform: translateY(40px);
+      transform: translateY(45px);
       transition: 1s ease;
     }
 
@@ -364,11 +317,12 @@
       transform: translateY(0);
     }
 
-    /* Mobile */
+    /* ---------- MOBILE ---------- */
+
     @media (max-width: 600px) {
 
       section {
-        padding: 70px 16px;
+        padding: 65px 16px;
       }
 
       .hero p {
@@ -381,6 +335,10 @@
 
       .letter p {
         font-size: 17px;
+      }
+
+      .highlight {
+        font-size: 19px !important;
       }
 
       .shayari {
@@ -396,11 +354,6 @@
         font-size: 19px;
       }
 
-      .memory-grid,
-      .reasons {
-        grid-template-columns: 1fr;
-      }
-
       .birthday-box {
         padding: 35px 20px;
       }
@@ -412,24 +365,35 @@
       .final-message {
         font-size: 18px;
       }
+
+      .next-btn {
+        padding: 13px 28px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Stars -->
+  <!-- STAR BACKGROUND -->
   <div class="stars" id="stars"></div>
+
 
   <div class="container">
 
-    <!-- OPENING -->
+    <!-- ================= OPENING ================= -->
+
     <section class="hero">
-      <div class="hero-box">
 
-        <div class="small-text">A little something for you</div>
+      <div class="content hero-box">
 
-        <h1>Hey, MINE 💗</h1>
+        <div class="small-text">
+          A little something for you
+        </div>
+
+        <h1>
+          Hey, MINE 💗
+        </h1>
 
         <p>
           Aaj kuch special hai…<br>
@@ -437,19 +401,28 @@
           Bas ek chhoti si cheez hai… <b>tere liye.</b>
         </p>
 
-        <button onclick="scrollToSection('message')">
+        <button
+          class="next-btn"
+          onclick="goTo('message')">
           Open kar na 👀💗
         </button>
 
       </div>
+
     </section>
 
 
-    <!-- MAIN MESSAGE -->
-    <section id="message" class="hidden-section">
+    <!-- ================= MESSAGE ================= -->
+
+    <section
+      id="message"
+      class="hidden-section">
+
       <div class="content">
 
-        <h2>Happy Birthday, MINE. 💗</h2>
+        <h2>
+          Happy Birthday, MINE. 💗
+        </h2>
 
         <div class="letter">
 
@@ -479,15 +452,28 @@
 
         </div>
 
+        <button
+          class="next-btn"
+          onclick="goTo('shayari')">
+          Next →
+        </button>
+
       </div>
+
     </section>
 
 
-    <!-- SHAYARI -->
-    <section class="hidden-section">
+    <!-- ================= SHAYARI ================= -->
+
+    <section
+      id="shayari"
+      class="hidden-section">
+
       <div class="content">
 
-        <h2>For You… 💗</h2>
+        <h2>
+          For You… 💗
+        </h2>
 
         <div class="shayari">
 
@@ -498,7 +484,8 @@
 
           <p class="special">
             Tu bestfriend hai meri, ye baat alag hai,<br>
-            Par sach kahu toh… <b>tu thodi zyada hi kamaal hai. 💗</b>
+            Par sach kahu toh…
+            <b>tu thodi zyada hi kamaal hai. 💗</b>
           </p>
 
           <p>
@@ -525,124 +512,123 @@
 
         </div>
 
+        <button
+          class="next-btn"
+          onclick="goTo('video1')">
+          Next →
+        </button>
+
       </div>
+
     </section>
 
 
-    <!-- MEMORIES -->
-    <section class="hidden-section">
+    <!-- ================= VIDEO 1 ================= -->
+
+    <section
+      id="video1"
+      class="hidden-section">
+
       <div class="content">
 
-        <h2>Kuch Yaadein… 📸💗</h2>
+        <h2>
+          Ek Chhoti Si Memory 🎥💗
+        </h2>
 
-        <p class="subtitle">
-          Kuch moments jo simple the…<br>
-          but somehow mere liye special ban gaye.
+        <p class="video-intro">
+          Kuch moments bas moments nahi rehte…<br>
+          baad mein yaadein ban jaate hain. 💗
         </p>
 
-        <div class="memory-grid">
-
-          <div class="memory">
-            <img src="images/photo1.jpg" alt="Memory 1">
-            <div class="memory-caption">
-              Ye wala moment 😂💗
-            </div>
-          </div>
-
-          <div class="memory">
-            <img src="images/photo2.jpg" alt="Memory 2">
-            <div class="memory-caption">
-              Is din ki bakchodi abhi tak yaad hai. 😭😂
-            </div>
-          </div>
-
-          <div class="memory">
-            <img src="images/photo3.jpg" alt="Memory 3">
-            <div class="memory-caption">
-              One of my favourite memories. 💗
-            </div>
-          </div>
-
-          <div class="memory">
-            <img src="images/photo4.jpg" alt="Memory 4">
-            <div class="memory-caption">
-              Bas tu aur teri bakchodi. 😂
-            </div>
-          </div>
-
-        </div>
-
-        <!-- VIDEO -->
         <div class="video-box">
 
-          <video controls playsinline>
-            <source src="videos/video1.mp4" type="video/mp4">
+          <video
+            controls
+            playsinline
+            preload="metadata">
+
+            <source
+              src="videos/video1.mp4"
+              type="video/mp4">
+
             Your browser does not support this video.
+
           </video>
 
         </div>
 
+        <button
+          class="next-btn"
+          onclick="goTo('video2')">
+          Next →
+        </button>
+
       </div>
+
     </section>
 
 
-    <!-- THINGS I LOVE -->
-    <section class="hidden-section">
+    <!-- ================= VIDEO 2 ================= -->
+
+    <section
+      id="video2"
+      class="hidden-section">
+
       <div class="content">
 
-        <h2>Things I Love About You 🫶🏻</h2>
+        <h2>
+          And One More… 🎥💗
+        </h2>
 
-        <div class="reasons">
+        <p class="video-intro">
+          Because obviously… ek video se kaam thodi chalega. 😂
+        </p>
 
-          <div class="reason">
-            Teri smile. 💗
-          </div>
+        <div class="video-box">
 
-          <div class="reason">
-            Teri stupid si baatein. 😂
-          </div>
+          <video
+            controls
+            playsinline
+            preload="metadata">
 
-          <div class="reason">
-            Teri bakbak.
-          </div>
+            <source
+              src="videos/video2.mp4"
+              type="video/mp4">
 
-          <div class="reason">
-            Tera mujhe irritate karna. 😂
-          </div>
+            Your browser does not support this video.
 
-          <div class="reason">
-            Tera gussa.
-          </div>
-
-          <div class="reason">
-            The way you understand me.
-          </div>
-
-          <div class="reason">
-            Tera random pagalpan. 😭
-          </div>
-
-          <div class="reason">
-            Aur sabse zyada… <b>bas tera hona. 💗</b>
-          </div>
+          </video>
 
         </div>
 
+        <button
+          class="next-btn"
+          onclick="goTo('birthday')">
+          Next →
+        </button>
+
       </div>
+
     </section>
 
 
-    <!-- BIRTHDAY -->
-    <section class="hidden-section">
+    <!-- ================= BIRTHDAY ================= -->
+
+    <section
+      id="birthday"
+      class="hidden-section">
+
       <div class="content">
 
         <div class="birthday-box">
 
-          <div class="birthday-title">
+          <div class="birthday-icon">
             🎂
           </div>
 
-          <h2>Okay MINE, ab serious ho ja. 😂</h2>
+          <h2>
+            Okay MINE, ab serious ho ja. 😂
+          </h2>
 
           <p>
             I hope this birthday brings you everything you deserve —
@@ -665,12 +651,22 @@
 
         </div>
 
+        <button
+          class="next-btn"
+          onclick="goTo('final')">
+          Next →
+        </button>
+
       </div>
+
     </section>
 
 
-    <!-- FINAL -->
-    <section class="final hidden-section">
+    <!-- ================= FINAL ================= -->
+
+    <section
+      id="final"
+      class="final hidden-section">
 
       <div class="content final-box">
 
@@ -678,7 +674,9 @@
           One last thing…
         </div>
 
-        <h2>💗</h2>
+        <div class="final-heart">
+          💗
+        </div>
 
         <div class="final-message">
 
@@ -698,7 +696,9 @@
 
           <br><br>
 
-          <b>Happy Birthday, MINE. 💗</b>
+          <b>
+            Happy Birthday, MINE. 💗
+          </b>
 
           <br><br>
 
@@ -725,53 +725,80 @@
   </div>
 
 
-  <!-- MUSIC BUTTON -->
-  <button class="music-btn" onclick="toggleMusic()" id="musicButton">
+  <!-- ================= MUSIC ================= -->
+
+  <button
+    class="music-btn"
+    onclick="toggleMusic()"
+    id="musicButton">
+
     🎵
+
   </button>
 
-  <audio id="bgMusic" loop>
-    <source src="music/song.mp3" type="audio/mpeg">
+  <audio
+    id="bgMusic"
+    loop>
+
+    <source
+      src="music/song.mp3"
+      type="audio/mpeg">
+
   </audio>
 
 
   <script>
 
-    /* Stars */
-    const starsContainer = document.getElementById("stars");
+    /* ---------- STARS ---------- */
+
+    const starsContainer =
+      document.getElementById("stars");
 
     for (let i = 0; i < 120; i++) {
 
-      const star = document.createElement("div");
+      const star =
+        document.createElement("div");
 
       star.classList.add("star");
 
-      star.style.left = Math.random() * 100 + "%";
-      star.style.top = Math.random() * 100 + "%";
+      star.style.left =
+        Math.random() * 100 + "%";
+
+      star.style.top =
+        Math.random() * 100 + "%";
 
       star.style.animationDelay =
         Math.random() * 3 + "s";
 
       star.style.transform =
-        "scale(" + (Math.random() * 1.5 + 0.5) + ")";
+        "scale(" +
+        (Math.random() * 1.5 + 0.5) +
+        ")";
 
       starsContainer.appendChild(star);
     }
 
 
-    /* Scroll */
-    function scrollToSection(id) {
+    /* ---------- NEXT BUTTON ---------- */
 
-      const section = document.getElementById(id);
+    function goTo(id) {
 
-      section.scrollIntoView({
-        behavior: "smooth"
-      });
+      const section =
+        document.getElementById(id);
+
+      if (section) {
+
+        section.scrollIntoView({
+          behavior: "smooth"
+        });
+
+      }
 
     }
 
 
-    /* Reveal sections */
+    /* ---------- SECTION REVEAL ---------- */
+
     const sections =
       document.querySelectorAll(".hidden-section");
 
@@ -803,7 +830,8 @@
     });
 
 
-    /* Music */
+    /* ---------- MUSIC ---------- */
+
     const music =
       document.getElementById("bgMusic");
 
@@ -817,11 +845,20 @@
 
       if (!playing) {
 
-        music.play();
+        music.play()
+          .then(() => {
 
-        musicButton.innerHTML = "🔊";
+            musicButton.innerHTML = "🔊";
+            playing = true;
 
-        playing = true;
+          })
+          .catch(() => {
+
+            alert(
+              "Music start nahi ho pa raha. Song file check karna. 💗"
+            );
+
+          });
 
       } else {
 
