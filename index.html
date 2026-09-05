@@ -1,878 +1,601 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>For MINE 💗</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      background:
-        radial-gradient(circle at top, #35152d 0%, #160b19 45%, #08050a 100%);
-      color: white;
-      overflow-x: hidden;
-    }
-
-    /* ---------- STARS ---------- */
-
-    .stars {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: white;
-      border-radius: 50%;
-      opacity: 0.6;
-      animation: twinkle 3s infinite ease-in-out;
-    }
-
-    @keyframes twinkle {
-      0%, 100% {
-        opacity: 0.15;
-      }
-
-      50% {
-        opacity: 1;
-      }
-    }
-
-    /* ---------- GENERAL ---------- */
-
-    .container {
-      position: relative;
-      z-index: 1;
-    }
-
-    section {
-      min-height: 100vh;
-      padding: 70px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .content {
-      width: 100%;
-      max-width: 850px;
-      margin: auto;
-    }
-
-    h1 {
-      font-size: clamp(48px, 13vw, 95px);
-      font-weight: normal;
-      margin-bottom: 20px;
-      text-shadow: 0 0 30px rgba(255, 120, 180, 0.3);
-    }
-
-    h2 {
-      font-size: clamp(34px, 8vw, 55px);
-      font-weight: normal;
-      margin-bottom: 35px;
-    }
-
-    .small-text {
-      font-size: 14px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      opacity: 0.65;
-      margin-bottom: 20px;
-    }
-
-    /* ---------- HERO ---------- */
-
-    .hero-box {
-      animation: fadeUp 1.7s ease;
-    }
-
-    .hero p {
-      font-size: 19px;
-      line-height: 1.9;
-      color: #e8dce4;
-      max-width: 650px;
-      margin: auto;
-    }
-
-    /* ---------- BUTTON ---------- */
-
-    .next-btn {
-      margin-top: 45px;
-      padding: 14px 32px;
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 30px;
-      background: rgba(255,255,255,0.07);
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s ease;
-      backdrop-filter: blur(8px);
-    }
-
-    .next-btn:hover {
-      transform: translateY(-3px);
-      background: rgba(255,255,255,0.14);
-      box-shadow: 0 10px 30px rgba(255,100,170,0.15);
-    }
-
-    /* ---------- MESSAGE ---------- */
-
-    .letter {
-      background: rgba(255,255,255,0.045);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 25px;
-      padding: 35px 28px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      backdrop-filter: blur(10px);
-    }
-
-    .letter p {
-      font-size: 18px;
-      line-height: 2;
-      color: #f1e7ed;
-      margin-bottom: 20px;
-    }
-
-    .letter p:last-child {
-      margin-bottom: 0;
-    }
-
-    .highlight {
-      font-size: 22px !important;
-    }
-
-    /* ---------- SHAYARI ---------- */
-
-    .shayari {
-      padding: 35px 25px;
-      border-radius: 25px;
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,0.07),
-          rgba(255,255,255,0.025)
-        );
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-    }
-
-    .shayari p {
-      font-size: 19px;
-      line-height: 2.15;
-      color: #f4e9ef;
-      margin-bottom: 22px;
-    }
-
-    .shayari p:last-child {
-      margin-bottom: 0;
-    }
-
-    .shayari .special {
-      font-size: 21px;
-    }
-
-    /* ---------- VIDEOS ---------- */
-
-    .video-intro {
-      color: #d6c7d0;
-      font-size: 17px;
-      line-height: 1.8;
-      margin-bottom: 30px;
-    }
-
-    .video-box {
-      width: 100%;
-      border-radius: 24px;
-      overflow: hidden;
-      background: rgba(0,0,0,0.4);
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    }
-
-    video {
-      width: 100%;
-      display: block;
-      max-height: 650px;
-      object-fit: contain;
-      background: #050308;
-    }
-
-    /* ---------- BIRTHDAY ---------- */
-
-    .birthday-box {
-      padding: 45px 25px;
-      border-radius: 28px;
-      background:
-        radial-gradient(
-          circle at top,
-          rgba(255,130,190,0.13),
-          transparent 55%
-        ),
-        rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .birthday-icon {
-      font-size: 65px;
-      margin-bottom: 20px;
-    }
-
-    .birthday-box p {
-      font-size: 19px;
-      line-height: 2;
-      color: #f0e5eb;
-      margin-bottom: 20px;
-    }
-
-    /* ---------- FINAL ---------- */
-
-    .final-box {
-      animation: fadeUp 2s ease;
-    }
-
-    .one-last {
-      font-size: 14px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      opacity: 0.6;
-      margin-bottom: 25px;
-    }
-
-    .final-heart {
-      font-size: 55px;
-      margin-bottom: 25px;
-      animation: heartbeat 1.8s infinite;
-    }
-
-    .final-message {
-      font-size: 20px;
-      line-height: 2;
-      color: #f2e7ed;
-    }
-
-    .signature {
-      margin-top: 45px;
-      font-size: 18px;
-      color: #d9c6d1;
-    }
-
-    @keyframes heartbeat {
-      0%, 100% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.12);
-      }
-    }
-
-    /* ---------- MUSIC ---------- */
-
-    .music-btn {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 20;
-      width: 52px;
-      height: 52px;
-      padding: 0;
-      margin: 0;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.1);
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-    }
-
-    /* ---------- SCROLL ANIMATION ---------- */
-
-    .hidden-section {
-      opacity: 0;
-      transform: translateY(45px);
-      transition: 1s ease;
-    }
-
-    .hidden-section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ---------- MOBILE ---------- */
-
-    @media (max-width: 600px) {
-
-      section {
-        padding: 65px 16px;
-      }
-
-      .hero p {
-        font-size: 17px;
-      }
-
-      .letter {
-        padding: 28px 20px;
-      }
-
-      .letter p {
-        font-size: 17px;
-      }
-
-      .highlight {
-        font-size: 19px !important;
-      }
-
-      .shayari {
-        padding: 28px 18px;
-      }
-
-      .shayari p {
-        font-size: 17px;
-        line-height: 2;
-      }
-
-      .shayari .special {
-        font-size: 19px;
-      }
-
-      .birthday-box {
-        padding: 35px 20px;
-      }
-
-      .birthday-box p {
-        font-size: 17px;
-      }
-
-      .final-message {
-        font-size: 18px;
-      }
-
-      .next-btn {
-        padding: 13px 28px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For MINE 💗</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  background:
+    radial-gradient(circle at top,#35113d 0%,#16091c 40%,#07040b 100%);
+  color:white;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1px);
+  background-size:70px 70px;
+  opacity:.12;
+}
+
+.stars{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1;
+}
+
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  opacity:.7;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{
+    opacity:.2;
+    transform:scale(.7);
+  }
+  to{
+    opacity:1;
+    transform:scale(1.2);
+  }
+}
+
+section{
+  min-height:100vh;
+  padding:70px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  z-index:2;
+}
+
+.container{
+  width:100%;
+  max-width:850px;
+  text-align:center;
+}
+
+.card{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:25px;
+  padding:35px 25px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+h1{
+  font-size:clamp(42px,10vw,80px);
+  margin-bottom:20px;
+  color:#ffd6f5;
+  text-shadow:0 0 25px rgba(255,120,220,.5);
+}
+
+h2{
+  font-size:clamp(30px,7vw,50px);
+  margin-bottom:25px;
+  color:#ffd9f6;
+}
+
+p{
+  font-size:clamp(18px,4vw,22px);
+  line-height:1.8;
+  color:#f7eaf5;
+}
+
+.shayari{
+  font-size:clamp(20px,4.5vw,27px);
+  line-height:2;
+  color:#ffe7f8;
+}
+
+button{
+  border:none;
+  padding:14px 26px;
+  margin-top:30px;
+  border-radius:50px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff7bd5,#ff4fb8);
+  color:white;
+  box-shadow:0 8px 25px rgba(255,79,184,.3);
+  transition:.25s;
+}
+
+button:hover{
+  transform:translateY(-3px) scale(1.03);
+}
+
+.video-box{
+  width:100%;
+  margin-top:25px;
+  border-radius:20px;
+  overflow:hidden;
+  background:#000;
+  box-shadow:0 15px 45px rgba(0,0,0,.5);
+}
+
+video{
+  width:100%;
+  display:block;
+  max-height:75vh;
+  background:#000;
+}
+
+.music-btn{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:100;
+  margin:0;
+  padding:12px 18px;
+  font-size:14px;
+}
+
+.troll{
+  margin-top:25px;
+  font-size:19px;
+  color:#ffb8e8;
+  font-weight:bold;
+}
+
+.signature{
+  margin-top:30px;
+  font-size:20px;
+  color:#ffc7ed;
+  font-style:italic;
+}
+
+.fade{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 1s ease;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media(max-width:600px){
+  section{
+    padding:50px 15px;
+  }
+
+  .card{
+    padding:28px 18px;
+  }
+
+  p{
+    font-size:17px;
+  }
+
+  .shayari{
+    font-size:19px;
+    line-height:1.8;
+  }
+
+  button{
+    font-size:15px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- STAR BACKGROUND -->
-  <div class="stars" id="stars"></div>
+<div class="stars" id="stars"></div>
 
+<!-- MUSIC -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
 
-  <div class="container">
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+🎵 Music
+</button>
 
-    <!-- ================= OPENING ================= -->
 
-    <section class="hero">
+<!-- OPENING -->
+<section id="opening">
+  <div class="container fade">
+    <div class="card">
 
-      <div class="content hero-box">
+      <h1>Hey, MINE 💗</h1>
 
-        <div class="small-text">
-          A little something for you
-        </div>
+      <p>
+        Aaj kuch special hai…<br>
+        Aur nahi, is baar koi normal birthday wish nahi hai. 😂<br>
+        Bas ek chhoti si cheez hai… tere liye.
+      </p>
 
-        <h1>
-          Hey, MINE 💗
-        </h1>
+      <button onclick="startExperience()">
+        Open kar na 👀💗
+      </button>
 
-        <p>
-          Aaj kuch special hai…<br>
-          Aur nahi, is baar koi normal birthday wish nahi hai. 😂<br>
-          Bas ek chhoti si cheez hai… <b>tere liye.</b>
-        </p>
-
-        <button
-          class="next-btn"
-          onclick="goTo('message')">
-          Open kar na 👀💗
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= MESSAGE ================= -->
-
-    <section
-      id="message"
-      class="hidden-section">
-
-      <div class="content">
-
-        <h2>
-          Happy Birthday, MINE. 💗
-        </h2>
-
-        <div class="letter">
-
-          <p>
-            Jab se apni dosti hui hai, pata hi nahi chala kab tu meri
-            life ka itna important part ban gayi. 💗
-          </p>
-
-          <p>
-            Itni saari memories, random bakchodi, fights, hasi-mazaak…
-            sab kuch somehow special hai.
-          </p>
-
-          <p>
-            Sach kahu toh, I’m genuinely glad ki tu meri life mein hai.
-          </p>
-
-          <p class="highlight">
-            Tu annoying toh bohot hai 😂 but still,
-            <b>you're my favourite person to annoy.</b> 😌💗
-          </p>
-
-          <p>
-            I don't know exactly kab hua, but somewhere along the way,
-            tu mere liye <b>thodi si zyada special ho gayi.</b> 👀💗
-          </p>
-
-        </div>
-
-        <button
-          class="next-btn"
-          onclick="goTo('shayari')">
-          Next →
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= SHAYARI ================= -->
-
-    <section
-      id="shayari"
-      class="hidden-section">
-
-      <div class="content">
-
-        <h2>
-          For You… 💗
-        </h2>
-
-        <div class="shayari">
-
-          <p>
-            <b>Teri dosti bhi badi kamaal hai,</b><br>
-            Kabhi sukoon, kabhi bawaal hai. 😂
-          </p>
-
-          <p class="special">
-            Tu bestfriend hai meri, ye baat alag hai,<br>
-            Par sach kahu toh…
-            <b>tu thodi zyada hi kamaal hai. 💗</b>
-          </p>
-
-          <p>
-            Teri bakbak sunna bhi achha lagta hai,<br>
-            Aur tera gussa dekhna toh aur bhi pyaara lagta hai… 😚
-          </p>
-
-          <p class="special">
-            <b>Bas ek dikkat hai madam,</b><br>
-            Tu bestfriend hai… ye dil ko samjhaun,<br>
-            ya teri in adaon pe thoda aur fida ho jaun? 👀😚😜
-          </p>
-
-          <p>
-            Teri ye smile bhi na, bada zulm karti hai,<br>
-            aur teri aankhon ki baat toh alag hi chalti hai… 👀
-          </p>
-
-          <p class="special">
-            Ab tu khud hi itni pyaari lagegi,<br>
-            toh mera dil thoda naughty ho jaaye,<br>
-            <b>isme meri kya galti hai? 🤷🏻💗</b>
-          </p>
-
-        </div>
-
-        <button
-          class="next-btn"
-          onclick="goTo('video1')">
-          Next →
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= VIDEO 1 ================= -->
-
-    <section
-      id="video1"
-      class="hidden-section">
-
-      <div class="content">
-
-        <h2>
-          Ek Chhoti Si Memory 🎥💗
-        </h2>
-
-        <p class="video-intro">
-          Kuch moments bas moments nahi rehte…<br>
-          baad mein yaadein ban jaate hain. 💗
-        </p>
-
-        <div class="video-box">
-
-          <video
-            controls
-            playsinline
-            preload="metadata">
-
-            <source
-              src="videos/video1.mp4"
-              type="video/mp4">
-
-            Your browser does not support this video.
-
-          </video>
-
-        </div>
-
-        <button
-          class="next-btn"
-          onclick="goTo('video2')">
-          Next →
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= VIDEO 2 ================= -->
-
-    <section
-      id="video2"
-      class="hidden-section">
-
-      <div class="content">
-
-        <h2>
-          And One More… 🎥💗
-        </h2>
-
-        <p class="video-intro">
-          Because obviously… ek video se kaam thodi chalega. 😂
-        </p>
-
-        <div class="video-box">
-
-          <video
-            controls
-            playsinline
-            preload="metadata">
-
-            <source
-              src="videos/video2.mp4"
-              type="video/mp4">
-
-            Your browser does not support this video.
-
-          </video>
-
-        </div>
-
-        <button
-          class="next-btn"
-          onclick="goTo('birthday')">
-          Next →
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= BIRTHDAY ================= -->
-
-    <section
-      id="birthday"
-      class="hidden-section">
-
-      <div class="content">
-
-        <div class="birthday-box">
-
-          <div class="birthday-icon">
-            🎂
-          </div>
-
-          <h2>
-            Okay MINE, ab serious ho ja. 😂
-          </h2>
-
-          <p>
-            I hope this birthday brings you everything you deserve —
-            happiness, success, peace and lots of reasons to smile.
-          </p>
-
-          <p>
-            Tu hamesha khush rahe, apne dreams achieve kare,
-            aur life mein jo bhi chahe woh mile. 💗
-          </p>
-
-          <p>
-            Bas aise hi rehna… thodi pagal, thodi annoying,
-            but always <b>you.</b> 😌💗
-          </p>
-
-          <p>
-            Aur haan… mujhe aise hi tolerate karti rehna. 😂
-          </p>
-
-        </div>
-
-        <button
-          class="next-btn"
-          onclick="goTo('final')">
-          Next →
-        </button>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= FINAL ================= -->
-
-    <section
-      id="final"
-      class="final hidden-section">
-
-      <div class="content final-box">
-
-        <div class="one-last">
-          One last thing…
-        </div>
-
-        <div class="final-heart">
-          💗
-        </div>
-
-        <div class="final-message">
-
-          Tu mere liye jitna sochti hai,
-          usse <b>thodi zyada special hai. 💗</b>
-
-          <br><br>
-
-          I’m genuinely lucky to have you in my life.
-
-          <br><br>
-
-          I don't know future mein kya hoga,
-          but I really hope ki aisi hi aur memories banate rahein…
-          aur tere birthdays mein mujhe tujhe annoy karne ka
-          chance milta rahe. 😂💗
-
-          <br><br>
-
-          <b>
-            Happy Birthday, MINE. 💗
-          </b>
-
-          <br><br>
-
-          Stay happy.<br>
-          Stay crazy.<br>
-          Stay exactly the way you are.
-
-          <br><br>
-
-          <b>
-            Aur haan… meri MINE hi rehna. 👀😚💗
-          </b>
-
-        </div>
-
-        <div class="signature">
-          — Tera favourite idiot 💗
-        </div>
-
-      </div>
-
-    </section>
-
+    </div>
   </div>
+</section>
 
 
-  <!-- ================= MUSIC ================= -->
+<!-- MESSAGE -->
+<section id="message">
+  <div class="container fade">
+    <div class="card">
 
-  <button
-    class="music-btn"
-    onclick="toggleMusic()"
-    id="musicButton">
+      <h2>Happy Birthday, MINE. 💗</h2>
 
-    🎵
+      <p>
+        Jab se apni dosti hui hai, pata hi nahi chala kab tu meri life ka
+        itna important part ban gayi. 💗
+        <br><br>
 
-  </button>
+        Itni saari memories, random bakchodi, fights, hasi-mazaak…
+        sab kuch somehow special hai.
+        <br><br>
 
-  <audio
-    id="bgMusic"
-    loop>
+        Sach kahu toh, I’m genuinely glad ki tu meri life mein hai.
+        <br><br>
 
-    <source
-      src="music/song.mp3"
-      type="audio/mpeg">
+        Tu annoying toh bohot hai 😂 but still,
+        you're my favourite person to annoy. 😌💗
+        <br><br>
 
-  </audio>
+        I don't know exactly kab hua, but somewhere along the way,
+        tu mere liye thodi si zyada special ho gayi. 👀💗
+      </p>
 
+      <button onclick="goTo('shayari')">
+        Aage bhi dekh 👀
+      </button>
 
-  <script>
-
-    /* ---------- STARS ---------- */
-
-    const starsContainer =
-      document.getElementById("stars");
-
-    for (let i = 0; i < 120; i++) {
-
-      const star =
-        document.createElement("div");
-
-      star.classList.add("star");
-
-      star.style.left =
-        Math.random() * 100 + "%";
-
-      star.style.top =
-        Math.random() * 100 + "%";
-
-      star.style.animationDelay =
-        Math.random() * 3 + "s";
-
-      star.style.transform =
-        "scale(" +
-        (Math.random() * 1.5 + 0.5) +
-        ")";
-
-      starsContainer.appendChild(star);
-    }
+    </div>
+  </div>
+</section>
 
 
-    /* ---------- NEXT BUTTON ---------- */
+<!-- SHAYARI -->
+<section id="shayari">
+  <div class="container fade">
+    <div class="card">
 
-    function goTo(id) {
+      <h2>For You… 💗</h2>
 
-      const section =
-        document.getElementById(id);
+      <p class="shayari">
+        Teri dosti bhi badi kamaal hai,<br>
+        Kabhi sukoon, kabhi bawaal hai. 😂<br>
+        Tu bestfriend hai meri, ye baat alag hai,<br>
+        Par sach kahu toh… tu thodi zyada hi kamaal hai. 💗
+        <br><br>
 
-      if (section) {
+        Teri bakbak sunna bhi achha lagta hai,<br>
+        Aur tera gussa dekhna toh aur bhi pyaara lagta hai…
+        <br><br>
 
-        section.scrollIntoView({
-          behavior: "smooth"
-        });
+        Bas ek dikkat hai madam,<br>
+        Tu bestfriend hai… ye dil ko samjhaun,<br>
+        ya teri in adaon pe thoda aur fida ho jaun? 👀😚😜
+        <br><br>
 
-      }
+        Teri ye smile bhi na, bada zulm karti hai,<br>
+        aur teri aankhon ki baat toh alag hi chalti hai…
+        <br><br>
 
-    }
+        Ab tu khud hi itni pyaari lagegi,<br>
+        toh mera dil thoda naughty ho jaaye,<br>
+        isme meri kya galti hai? 🤷🏻💗
+      </p>
 
+      <button onclick="goTo('video1')">
+        Ab kuch dekh 🎬💗
+      </button>
 
-    /* ---------- SECTION REVEAL ---------- */
-
-    const sections =
-      document.querySelectorAll(".hidden-section");
-
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
-
-          entries.forEach((entry) => {
-
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add("show");
-
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.15
-        }
-      );
+    </div>
+  </div>
+</section>
 
 
-    sections.forEach((section) => {
+<!-- VIDEO 1 -->
+<section id="video1">
+  <div class="container fade">
+    <div class="card">
 
-      observer.observe(section);
+      <h2>Okay… watch this. 👀💗</h2>
+
+      <div class="video-box">
+        <video
+          id="videoOne"
+          controls
+          playsinline
+          preload="metadata">
+
+          <source src="video1.mp4" type="video/mp4">
+
+          Your browser does not support the video.
+        </video>
+      </div>
+
+      <p class="small">
+        Video khatam hone de… next automatically aa jayega 👀
+      </p>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- VIDEO 2 -->
+<section id="video2">
+  <div class="container fade">
+    <div class="card">
+
+      <h2>One more… 😌💗</h2>
+
+      <div class="video-box">
+        <video
+          id="videoTwo"
+          controls
+          playsinline
+          preload="metadata">
+
+          <source src="video2.mp4" type="video/mp4">
+
+          Your browser does not support the video.
+        </video>
+      </div>
+
+      <button onclick="goTo('birthday')">
+        Ab birthday wali baat 🎂
+      </button>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- BIRTHDAY -->
+<section id="birthday">
+  <div class="container fade">
+    <div class="card">
+
+      <h2>Happy Birthday, MINE 🎂💗</h2>
+
+      <p class="troll">
+        Ab smile kar madam, birthday hai tera 🎂
+      </p>
+
+      <p>
+        I hope this birthday brings you everything you deserve —
+        happiness, success, peace and lots of reasons to smile.
+        <br><br>
+
+        Tu hamesha khush rahe, apne dreams achieve kare,
+        aur life mein jo bhi chahe woh mile. 💗
+        <br><br>
+
+        Bas aise hi rehna… thodi pagal, thodi annoying,
+        but always you. 😌💗
+        <br><br>
+
+        Aur haan… mujhe aise hi tolerate karti rehna. 😂
+      </p>
+
+      <button onclick="goTo('final')">
+        One last thing… 💗
+      </button>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- FINAL -->
+<section id="final">
+  <div class="container fade">
+    <div class="card">
+
+      <p class="troll">
+        Bas MINE… ab emotional hone ki permission hai 💗
+      </p>
+
+      <h2>One last thing…</h2>
+
+      <p>
+        Tu mere liye jitna sochti hai,
+        usse thodi zyada special hai. 💗
+        <br><br>
+
+        I’m genuinely lucky to have you in my life.
+        <br><br>
+
+        I don't know future mein kya hoga,
+        but I really hope ki aisi hi aur memories banate rahein…
+        aur tere birthdays mein mujhe tujhe annoy karne ka chance milta rahe. 😂💗
+        <br><br>
+
+        Happy Birthday, MINE. 💗
+        <br><br>
+
+        Stay happy.<br>
+        Stay crazy.<br>
+        Stay exactly the way you are.
+        <br><br>
+
+        Aur haan… meri MINE hi rehna. 👀😚💗
+      </p>
+
+      <div class="signature">
+        — Tera favourite idiot 💗
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<script>
+
+/* STARS */
+const starsContainer = document.getElementById("stars");
+
+for(let i=0;i<100;i++){
+
+  const star=document.createElement("div");
+
+  star.classList.add("star");
+
+  star.style.left=Math.random()*100+"%";
+  star.style.top=Math.random()*100+"%";
+  star.style.animationDelay=Math.random()*2+"s";
+
+  starsContainer.appendChild(star);
+}
+
+
+/* NAVIGATION */
+function goTo(id){
+
+  const element=document.getElementById(id);
+
+  if(element){
+
+    element.scrollIntoView({
+      behavior:"smooth"
+    });
+
+  }
+}
+
+
+/* START EXPERIENCE */
+function startExperience(){
+
+  const music=document.getElementById("bgMusic");
+
+  music.play()
+    .then(()=>{
+
+      musicPlaying=true;
+      musicBtn.innerHTML="⏸️ Music";
+
+    })
+    .catch(()=>{
+
+      console.log("Music autoplay blocked");
 
     });
 
-
-    /* ---------- MUSIC ---------- */
-
-    const music =
-      document.getElementById("bgMusic");
-
-    const musicButton =
-      document.getElementById("musicButton");
-
-    let playing = false;
+  goTo("message");
+}
 
 
-    function toggleMusic() {
+/* FADE IN */
+const observer=new IntersectionObserver(
+  (entries)=>{
 
-      if (!playing) {
+    entries.forEach((entry)=>{
 
-        music.play()
-          .then(() => {
+      if(entry.isIntersecting){
 
-            musicButton.innerHTML = "🔊";
-            playing = true;
-
-          })
-          .catch(() => {
-
-            alert(
-              "Music start nahi ho pa raha. Song file check karna. 💗"
-            );
-
-          });
-
-      } else {
-
-        music.pause();
-
-        musicButton.innerHTML = "🎵";
-
-        playing = false;
+        entry.target.classList.add("show");
 
       }
 
-    }
+    });
 
-  </script>
+  },
+  {
+    threshold:.15
+  }
+);
+
+document.querySelectorAll(".fade").forEach(element=>{
+  observer.observe(element);
+});
+
+
+/* MUSIC */
+const bgMusic=document.getElementById("bgMusic");
+const musicBtn=document.getElementById("musicBtn");
+
+let musicPlaying=false;
+
+function toggleMusic(){
+
+  if(musicPlaying){
+
+    bgMusic.pause();
+
+    musicBtn.innerHTML="🎵 Music";
+
+    musicPlaying=false;
+
+  }else{
+
+    bgMusic.play()
+      .then(()=>{
+
+        musicBtn.innerHTML="⏸️ Music";
+
+        musicPlaying=true;
+
+      })
+      .catch(()=>{
+
+        alert("Tap once more to start the music 🎵");
+
+      });
+
+  }
+}
+
+
+/* VIDEO 1 → VIDEO 2 AUTOMATICALLY */
+const videoOne=document.getElementById("videoOne");
+
+videoOne.addEventListener("ended",function(){
+
+  goTo("video2");
+
+});
+
+
+/* VIDEO 2 → BIRTHDAY AUTOMATICALLY */
+const videoTwo=document.getElementById("videoTwo");
+
+videoTwo.addEventListener("ended",function(){
+
+  goTo("birthday");
+
+});
+
+</script>
 
 </body>
 </html>
